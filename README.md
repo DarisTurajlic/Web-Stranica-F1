@@ -1,10 +1,22 @@
-# Web Stranica F1 - Moj Prvi Projekat
+# F1 Website 🏎️
 
-Ovo je moja prva web stranica napravljena u svrhu učenja i demonstracije vještina u HTML-u i CSS-u. Stranica je posvećena Formuli 1.
+## Description  
+This is my web project dedicated to Formula 1.  
+The goal of the project is to simulate a mini F1 portal — with pages, dynamic functionalities (live chat), modern design, and interactive elements.  
 
-## Korištene Tehnologije
-* HTML5
-* CSS3
+## Features  
+- Project is organized into logical folders for HTML, CSS, JS, and images (SS).  
+- Built with HTML5, CSS3, and JavaScript.  
+- Live chat system allowing the user to send messages and receive responses — messages remain visible permanently (like Viber/WhatsApp).  
+- Responsive and modern design (styles, buttons, backgrounds, etc.)  
+- Easy navigation between pages/sections (expandable as you develop the site further).  
 
-## Kako Pokrenuti
-Jednostavno preuzmite repozitorij i otvorite datoteku `F1.html` u bilo kojem web pregledniku.
+## Technologies  
+- HTML5  
+- CSS3  
+- JavaScript  
+
+## Installation / Running the Project Locally  
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/DarisTurajlic/Web-Stranica-F1.git
