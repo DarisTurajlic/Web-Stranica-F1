@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/F1.html" }
+  ],
+  "cleanUrls": true
+}
