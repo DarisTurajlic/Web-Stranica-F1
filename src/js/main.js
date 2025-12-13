@@ -133,42 +133,42 @@ function renderDrivers() {
             team: "Red Bull Racing",
             championships: 3,
             points: 437,
-            image: "../assets/max-verstappen.jpg"
+            image: "src/assets/max-verstappen.jpg"
         },
         {
             name: "Lewis Hamilton",
             team: "Mercedes",
             championships: 7,
             points: 412,
-            image: "../assets/lewis-hamilton.jpg"
+            image: "src/assets/lewis-hamilton.jpg"
         },
         {
             name: "Charles Leclerc",
             team: "Ferrari",
             championships: 0,
             points: 380,
-            image: "../assets/charles-leclerc.png"
+            image: "src/assets/charles-leclerc.png"
         },
         {
             name: "Lando Norris",
             team: "McLaren",
             championships: 0,
             points: 350,
-            image: "../assets/lando-norris.jpg"
+            image: "src/assets/lando-norris.jpg"
         },
         {
             name: "George Russell",
             team: "Mercedes",
             championships: 0,
             points: 340,
-            image: "../assets/george russell.webp"
+            image: "src/assets/george-russell.webp"
         },
         {
             name: "Carlos Sainz",
             team: "Ferrari",
             championships: 0,
             points: 320,
-            image: "../assets/carlos seinz.png"
+            image: "src/assets/carlos-seinz.png"
         }
     ];
 
@@ -198,12 +198,12 @@ function renderDrivers() {
 
 function renderTeams() {
     var teamsData = [
-        { name: "Red Bull Racing", country: "Milton Keynes, UK", championships: 4, wins: 74, logo: "../assets/red-bull-racing.jpg" },
-        { name: "Mercedes", country: "Brackley, UK", championships: 8, wins: 104, logo: "../assets/mercedes.png" },
-        { name: "Ferrari", country: "Maranello, Italy", championships: 16, wins: 242, logo: "../assets/ferrari.jpg" },
-        { name: "McLaren", country: "Woking, UK", championships: 8, wins: 183, logo: "../assets/mclaren.jpg" },
-        { name: "Aston Martin", country: "Silverstone, UK", championships: 0, wins: 1, logo: "../assets/aston-marin.jpg" },
-        { name: "Alpine", country: "Enstone, UK", championships: 2, wins: 10, logo: "../assets/alpine.png" }
+        { name: "Red Bull Racing", country: "Milton Keynes, UK", championships: 4, wins: 74, logo: "src/assets/red-bull-racing.jpg" },
+        { name: "Mercedes", country: "Brackley, UK", championships: 8, wins: 104, logo: "src/assets/mercedes.png" },
+        { name: "Ferrari", country: "Maranello, Italy", championships: 16, wins: 242, logo: "src/assets/ferrari.jpg" },
+        { name: "McLaren", country: "Woking, UK", championships: 8, wins: 183, logo: "src/assets/mclaren.jpg" },
+        { name: "Aston Martin", country: "Silverstone, UK", championships: 0, wins: 1, logo: "src/assets/aston-marin.jpg" },
+        { name: "Alpine", country: "Enstone, UK", championships: 2, wins: 10, logo: "src/assets/alpine.png" }
     ];
 
     var teamsGrid = document.querySelector('.teams-grid');
