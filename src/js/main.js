@@ -1,3 +1,9 @@
+/* ============================================
+   F1 WEBSITE - MAIN JAVASCRIPT
+   Dynamic rendering, interactivity, chat
+   ============================================ */
+
+// Team Statistics Data
 var teamData = {
     mercedes: {
         championships: 8,
@@ -91,8 +97,335 @@ var teamData = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', function(){ 
+// Initialize page on DOM load
+document.addEventListener('DOMContentLoaded', function() {
+    initializeReadMore();
+    initializeTeamStats();
+    initializeChat();
+    renderDrivers();
+    renderTeams();
+});
+
+/* ============================================
+   READ MORE FUNCTIONALITY
+   ============================================ */
+
+function initializeReadMore() {
     var btn = document.getElementById('rm-btn');
+    var box = document.querySelector('.info-box');
+    if (btn && box) {
+        btn.addEventListener('click', function() {
+            var expanded = box.classList.toggle('expanded');
+            btn.setAttribute('aria-expanded', expanded);
+            btn.textContent = expanded ? 'Read less' : 'Read more';
+        });
+    }
+}
+
+/* ============================================
+   RENDER DRIVERS DYNAMICALLY
+   ============================================ */
+
+function renderDrivers() {
+    var driversData = [
+        {
+            name: "Max Verstappen",
+            team: "Red Bull Racing",
+            championships: 3,
+            points: 437,
+            image: "../assets/max-verstappen.jpg"
+        },
+        {
+            name: "Lewis Hamilton",
+            team: "Mercedes",
+            championships: 7,
+            points: 412,
+            image: "../assets/lewis-hamilton.jpg"
+        },
+        {
+            name: "Charles Leclerc",
+            team: "Ferrari",
+            championships: 0,
+            points: 380,
+            image: "../assets/charles-leclerc.png"
+        },
+        {
+            name: "Lando Norris",
+            team: "McLaren",
+            championships: 0,
+            points: 350,
+            image: "../assets/lando-norris.jpg"
+        },
+        {
+            name: "George Russell",
+            team: "Mercedes",
+            championships: 0,
+            points: 340,
+            image: "../assets/george russell.webp"
+        },
+        {
+            name: "Carlos Sainz",
+            team: "Ferrari",
+            championships: 0,
+            points: 320,
+            image: "../assets/carlos seinz.png"
+        }
+    ];
+
+    var driversGrid = document.querySelector('.drivers-grid');
+    if (!driversGrid) return;
+
+    driversGrid.innerHTML = '';
+    driversData.forEach(function(driver) {
+        var card = document.createElement('div');
+        card.className = 'driver-card';
+        card.innerHTML = '<img src="' + driver.image + '" alt="' + driver.name + '" class="driver-photo">' +
+            '<div class="driver-info">' +
+            '<h3>' + driver.name + '</h3>' +
+            '<p class="team">' + driver.team + '</p>' +
+            '<div class="driver-stats">' +
+            '<span class="stat-badge">🏆 ' + driver.championships + 'x Champion</span>' +
+            '<span class="stat-badge">⚡ 2024 Points: ' + driver.points + '</span>' +
+            '</div>' +
+            '</div>';
+        driversGrid.appendChild(card);
+    });
+}
+
+/* ============================================
+   RENDER TEAMS DYNAMICALLY
+   ============================================ */
+
+function renderTeams() {
+    var teamsData = [
+        { name: "Red Bull Racing", country: "Milton Keynes, UK", championships: 4, wins: 74, logo: "../assets/red-bull-racing.jpg" },
+        { name: "Mercedes", country: "Brackley, UK", championships: 8, wins: 104, logo: "../assets/mercedes.png" },
+        { name: "Ferrari", country: "Maranello, Italy", championships: 16, wins: 242, logo: "../assets/ferrari.jpg" },
+        { name: "McLaren", country: "Woking, UK", championships: 8, wins: 183, logo: "../assets/mclaren.jpg" },
+        { name: "Aston Martin", country: "Silverstone, UK", championships: 0, wins: 1, logo: "../assets/aston-marin.jpg" },
+        { name: "Alpine", country: "Enstone, UK", championships: 2, wins: 10, logo: "../assets/alpine.png" }
+    ];
+
+    var teamsGrid = document.querySelector('.teams-grid');
+    if (!teamsGrid) return;
+
+    teamsGrid.innerHTML = '';
+    teamsData.forEach(function(team) {
+        var card = document.createElement('div');
+        card.className = 'team-card';
+        card.innerHTML = '<div class="team-logo"><img src="' + team.logo + '" alt="' + team.name + '"></div>' +
+            '<h3>' + team.name + '</h3>' +
+            '<p class="team-country">' + team.country + '</p>' +
+            '<div class="team-quick-stats">' +
+            '<div class="quick-stat"><span class="label">Championships</span><span class="value">' + team.championships + '</span></div>' ;
+        teamsGrid.appendChild(card);
+    });
+}
+
+/* ============================================
+   TEAM STATS FUNCTIONALITY
+   ============================================ */
+
+function initializeTeamStats() {
+    var teamButtons = document.querySelectorAll('.team-btn');
+    teamButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var teamKey = this.getAttribute('data-team');
+            teamButtons.forEach(function(b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            updateTeamStats(teamKey);
+        });
+    });
+
+    // Initialize with default team
+    updateTeamStats('mercedes');
+}
+
+function updateTeamStats(teamKey) {
+    var stats = teamData[teamKey];
+    if (!stats) return;
+
+    var statElements = document.querySelectorAll('[data-stat]');
+    statElements.forEach(function(elem) {
+        var statName = elem.getAttribute('data-stat');
+        var target = stats[statName] || 0;
+        elem.setAttribute('data-target', target);
+    });
+
+    animateCounters();
+    animateBars();
+}
+
+function animateCounters() {
+    var counters = document.querySelectorAll('.stat-value[data-stat]');
+    counters.forEach(function(counter) {
+        var target = +counter.getAttribute('data-target') || 0;
+        var duration = 800;
+        var startTime = null;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = timestamp - startTime;
+            var pct = Math.min(progress / duration, 1);
+            var value = Math.floor(pct * target);
+            counter.textContent = value;
+            if (progress < duration) requestAnimationFrame(step);
+            else counter.textContent = target;
+        }
+
+        requestAnimationFrame(step);
+    });
+}
+
+function animateBars() {
+    var fills = document.querySelectorAll('.bar-fill[data-stat]');
+    fills.forEach(function(fill, i) {
+        var statName = fill.getAttribute('data-stat');
+        var teamBtn = document.querySelector('.team-btn.active');
+        var teamKey = teamBtn ? teamBtn.getAttribute('data-team') : 'mercedes';
+        var target = teamData[teamKey][statName] || 0;
+
+        fill.style.width = '0%';
+        fill.textContent = '0%';
+        setTimeout(function() {
+            fill.style.width = target + '%';
+            fill.textContent = target + '%';
+        }, 100 * i + 100);
+    });
+}
+
+/* ============================================
+   LIVE CHAT FUNCTIONALITY
+   ============================================ */
+
+function initializeChat() {
+    var chatInput = document.getElementById('chatInput');
+    var sendBtn = document.getElementById('sendBtn');
+    var chatMessages = document.getElementById('chatMessages');
+
+    var chatHistory = [];
+    var STORAGE_KEY = 'f1_chat_history';
+
+    function loadChatHistory() {
+        var stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            try {
+                chatHistory = JSON.parse(stored) || [];
+            } catch (e) {
+                console.error('Error loading chat history:', e);
+                chatHistory = [];
+            }
+        }
+        renderChat();
+    }
+
+    function renderChat() {
+        chatMessages.innerHTML = '';
+        chatHistory.forEach(function(msg) {
+            addMessageToDisplay(msg.sender, msg.text, msg.author, msg.ts);
+        });
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addMessageToDisplay(sender, text, author, ts) {
+        var msgDiv = document.createElement('div');
+        msgDiv.className = 'chat-message ' + (sender === 'user' ? 'user' : sender === 'bot' ? 'other' : 'system');
+
+        var messageText = document.createElement('div');
+        messageText.className = 'message-text';
+        messageText.textContent = text;
+        msgDiv.appendChild(messageText);
+
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function saveChatHistory() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(chatHistory));
+    }
+
+    function appendMessage(sender, text, author) {
+        var entry = { sender: sender, text: text, author: author || null, ts: Date.now() };
+        chatHistory.push(entry);
+        saveChatHistory();
+        renderChat();
+    }
+
+    var botKnowledge = {
+        'lewis|hamilton': 'Lewis Hamilton is a 7-time F1 World Champion and the most successful driver in F1 history. He races for Mercedes.',
+        'max|verstappen': 'Max Verstappen is a 3-time F1 World Champion racing for Red Bull Racing. He\'s one of the greatest drivers on the grid.',
+        'charles|leclerc': 'Charles Leclerc drives for Ferrari. He\'s known for his speed and smooth driving style.',
+        'lando|norris': 'Lando Norris races for McLaren. The young British driver is rising through the ranks.',
+        'ferrari': 'Ferrari is the legendary Italian team with the most championships in F1 history.',
+        'mercedes': 'Mercedes is the dominant force in modern F1, with 8 Constructors\' Championships.',
+        'red bull': 'Red Bull Racing is one of the top teams in F1, with 4 Constructors\' Championships.',
+        'how many|races|season': 'A Formula 1 season typically consists of 24 races. Each race awards points based on finishing position.',
+        'how many|points|win': 'The winner of a race receives 25 points in modern F1. Second place gets 18 points, third gets 15.',
+        'what is|f1|formula 1': 'Formula 1 is the highest level of single-seater racing in the world.',
+        'hello|hi|hey': 'Hello! Welcome to the F1 chat! Ask me anything about Formula 1!'
+    };
+
+    function getBotResponse(userMessage) {
+        var lowerMsg = userMessage.toLowerCase();
+
+        for (var key in botKnowledge) {
+            var patterns = key.split('|');
+            for (var i = 0; i < patterns.length; i++) {
+                if (lowerMsg.indexOf(patterns[i]) !== -1) {
+                    return botKnowledge[key];
+                }
+            }
+        }
+
+        var responses = [
+            'That\'s interesting! Can you ask me about a specific driver or team?',
+            'Good question! Try asking about drivers, teams, or F1 rules.',
+            'I\'m here to help with F1 knowledge! Ask me about anything F1-related.',
+            'That\'s a great topic! Do you have other F1 questions?'
+        ];
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
+
+    function sendMessage() {
+        var text = chatInput.value.trim();
+        if (!text) return;
+
+        appendMessage('user', text, null);
+        chatInput.value = '';
+
+        setTimeout(function() {
+            var response = getBotResponse(text);
+            appendMessage('bot', response, 'F1 Bot');
+        }, 500 + Math.random() * 300);
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    var clearBtn = document.getElementById('clearChatBtn');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear all messages?')) {
+                chatHistory = [];
+                localStorage.removeItem(STORAGE_KEY);
+                renderChat();
+                appendMessage('bot', 'Chat cleared. Start a new conversation!', 'F1 Bot');
+            }
+        });
+    }
+
+    loadChatHistory();
+    if (chatHistory.length === 0) {
+        appendMessage('bot', 'Hi! Ask me anything about F1 - drivers, teams, rules, or race info!', 'F1 Bot');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function(){ 
+    var btn = document.getElementById('.read-more-btn');
     var box = document.querySelector('.info-box');
     if(btn && box){
         btn.addEventListener('click', function(){

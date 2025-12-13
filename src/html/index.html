@@ -7,20 +7,21 @@
     <title>Formula 1</title>
 </head>
 <body>
-    <div class="banner">
+    <div class="banner" id="banner">
         <div class="navbar">
-            <img src="../assets/logoTura.png" class="logo">
-            <ul>
-                <li>
-                    <a href="#">Home</a></li>
-                    <li><a href="#drivers" class="drivers">Drivers</a></li>
+            <div class="navbar-content">
+                <img src="../assets/logoTura.png" class="logo">
+                <ul>
+                    <li><a href="#banner">Home</a></li>
+                    <li><a href="#drivers">Drivers</a></li>
                     <li><a href="#bolids">Bolids</a></li>
                     <li><a href="#teams">Teams</a></li>
                     <li><a href="#stats">Stats</a></li>
                     <li><a href="#videos">Videos</a></li>
-                    <li><a href="#store">Store</a>
-                </li>
-            </ul>
+                    <li><a href="#live">Chat</a></li>
+                    <li><a href="#store">Store</a></li>
+                </ul>
+            </div>
         </div>
         <div class="content">
             <h1>FORMULA 1</h1>
@@ -31,10 +32,40 @@
             </div>
         </div>
     </div>
-    <div id="drivers" class="driversText">
-
-        <img src="../assets/vozaci.jpg" alt="" width="1520" height="720">
-
+    <!-- DRIVERS SECTION -->
+    <div id="drivers" class="section drivers-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>F1 DRIVERS 2024</h2>
+                <p>Meet the world's best racing drivers</p>
+            </div>
+            <div class="drivers-grid">
+                <!-- Driver cards will be populated here -->
+                <div class="driver-card">
+                    <img src="../assets/max.png" alt="Max Verstappen" class="driver-photo">
+                    <div class="driver-info">
+                        <h3>Max Verstappen</h3>
+                        <p class="team">Red Bull Racing</p>
+                        <div class="driver-stats">
+                            <span class="stat-badge">🏆 3x Champion</span>
+                            <span class="stat-badge">⚡ 2024 Points: 437</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional drivers can be added here -->
+                  <div class="driver-card">
+                    <img src="../assets/lewis-hamilton.jpg" alt="Lewis Hamilton" class="driver-photo">
+                    <div class="driver-info">
+                        <h3>Lewis Hamilton</h3>
+                        <p class="team">Mercedes-AMG Petronas</p>
+                        <div class="driver-stats">
+                            <span class="stat-badge">🏆 3x Champion</span>
+                            <span class="stat-badge">⚡ 2024 Points: 437</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="bolids" class="bolidi">
         <div class="info-box" role="region" aria-labelledby="bolidi-title">
@@ -44,8 +75,34 @@
             <button id="rm-btn" class="read-more-btn" aria-controls="bolidi-more" aria-expanded="false">Read more</button>
         </div>
     </div>
-    <div id="teams" class="timovi">
-       
+    <!-- TEAMS SECTION -->
+    <div id="teams" class="section teams-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>F1 TEAMS 2024</h2>
+                <p>Explore the top constructor teams in Formula 1</p>
+            </div>
+            <div class="teams-grid">
+                <!-- Team cards will be populated by JavaScript -->
+                <div class="team-card">
+                    <div class="team-logo">
+                        <img src="../assets/logoTura.png" alt="Team Logo">
+                    </div>
+                    <h3>Red Bull Racing</h3>
+                    <p class="team-country">Milton Keynes, UK</p>
+                    <div class="team-quick-stats">
+                        <div class="quick-stat">
+                            <span class="label">Championships</span>
+                            <span class="value">4</span>
+                        </div>
+                        <div class="quick-stat">
+                            <span class="label">Wins</span>
+                            <span class="value">74</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="stats" class="statistika">
         <div class="stats-wrapper" role="region" aria-labelledby="stats-title">
@@ -123,14 +180,59 @@
             </div>
         </div>
     </div>
-    <div id="store" class="prodavnica">
-        
-    <a href="https://f1store.formula1.com/en/red-bull-racing/oracle-red-bull-racing-2023-max-verstappen-team-polo/t-32757505+p-89479247603408+z-9-3493440189?_ref=p-ALP:m-GRID:i-r3c2:po-11"><img src="../assets/majice.avif" alt="" class="majice-klasa" width="400" height="400"></a>
+    <!-- STORE SECTION -->
+    <div id="store" class="section store-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>F1 MERCHANDISE</h2>
+                <p>Official Formula 1 merchandise and apparel</p>
+            </div>
+            <div class="store-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/majice.avif" alt="Team Polo Shirt">
+                        <span class="product-badge">FEATURED</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Red Bull Racing Polo</h3>
+                        <p class="product-description">Official Team Polo Shirt</p>
+                        <div class="product-price">
+                            <span class="price">$59.99</span>
+                        </div>
+                        <a href="https://f1store.formula1.com/en/red-bull-racing/oracle-red-bull-racing-2023-max-verstappen-team-polo/t-32757505+p-89479247603408+z-9-3493440189" class="btn-primary" target="_blank">View & Buy</a>
+                    </div>
+                </div>
 
-    <a href="https://f1store.formula1.com/en/formula-1-merchandise/formula-1-hometeam-5-panel-flatbrim-cap/t-21542210+p-579956660321159+z-9-3981667319?_ref=p-DLP:m-GRID:i-r19c0:po-57"><img src="../assets/kacket.jpg" alt="" height="400" width="400" class="kacket-klasa"></a>
-    
-    <a href="https://f1store.formula1.com/en/mercedes-amg-petronas-f1-team/mercedes-amg-petronas-f1-2024-team-softshell-jacket/t-43203191+p-13112378287067+z-8-2168349596?_ref=p-TLP:m-GRID:i-r1c0:po-3"><img src="../assets/hoodie.avif" alt="" height="400" width="400" class="hoodie-klasa"></a>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/kacket.jpg" alt="F1 Cap">
+                        <span class="product-badge">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>F1 Team Cap</h3>
+                        <p class="product-description">Official Formula 1 Cap</p>
+                        <div class="product-price">
+                            <span class="price">$34.99</span>
+                        </div>
+                        <a href="https://f1store.formula1.com/en/formula-1-merchandise/formula-1-hometeam-5-panel-flatbrim-cap/t-21542210+p-579956660321159+z-9-3981667319" class="btn-primary" target="_blank">View & Buy</a>
+                    </div>
+                </div>
 
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/hoodie.avif" alt="Mercedes Hoodie">
+                    </div>
+                    <div class="product-info">
+                        <h3>Mercedes F1 Jacket</h3>
+                        <p class="product-description">Premium Team Softshell Jacket</p>
+                        <div class="product-price">
+                            <span class="price">$129.99</span>
+                        </div>
+                        <a href="https://f1store.formula1.com/en/mercedes-amg-petronas-f1-team/mercedes-amg-petronas-f1-2024-team-softshell-jacket/t-43203191+p-13112378287067+z-8-2168349596" class="btn-primary" target="_blank">View & Buy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="../js/main.js"></script>
 </body>

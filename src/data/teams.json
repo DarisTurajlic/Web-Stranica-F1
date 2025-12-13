@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Red Bull Racing",
+    "country": "Milton Keynes, UK",
+    "championships": 4,
+    "wins": 74,
+    "podiums": 258,
+    "logo": "../assets/logoTura.png"
+  },
+  {
+    "id": 2,
+    "name": "Mercedes",
+    "country": "Brackley, UK",
+    "championships": 8,
+    "wins": 104,
+    "podiums": 320,
+    "logo": "../assets/logoTura.png"
+  },
+  {
+    "id": 3,
+    "name": "Ferrari",
+    "country": "Maranello, Italy",
+    "championships": 16,
+    "wins": 242,
+    "podiums": 634,
+    "logo": "../assets/logoTura.png"
+  },
+  {
+    "id": 4,
+    "name": "McLaren",
+    "country": "Woking, UK",
+    "championships": 8,
+    "wins": 183,
+    "podiums": 510,
+    "logo": "../assets/logoTura.png"
+  },
+  {
+    "id": 5,
+    "name": "Aston Martin",
+    "country": "Silverstone, UK",
+    "championships": 0,
+    "wins": 1,
+    "podiums": 25,
+    "logo": "../assets/logoTura.png"
+  },
+  {
+    "id": 6,
+    "name": "Alpine",
+    "country": "Enstone, UK",
+    "championships": 2,
+    "wins": 10,
+    "podiums": 30,
+    "logo": "../assets/logoTura.png"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Max Verstappen",
+    "team": "Red Bull Racing",
+    "country": "Netherlands",
+    "championships": 3,
+    "points": 437,
+    "image": "../assets/max.png"
+  },
+  {
+    "id": 2,
+    "name": "Lewis Hamilton",
+    "team": "Mercedes",
+    "country": "United Kingdom",
+    "championships": 7,
+    "points": 412,
+    "image": "../assets/max.png"
+  },
+  {
+    "id": 3,
+    "name": "Charles Leclerc",
+    "team": "Ferrari",
+    "country": "Monaco",
+    "championships": 0,
+    "points": 380,
+    "image": "../assets/max.png"
+  },
+  {
+    "id": 4,
+    "name": "Lando Norris",
+    "team": "McLaren",
+    "country": "United Kingdom",
+    "championships": 0,
+    "points": 350,
+    "image": "../assets/max.png"
+  },
+  {
+    "id": 5,
+    "name": "George Russell",
+    "team": "Mercedes",
+    "country": "United Kingdom",
+    "championships": 0,
+    "points": 340,
+    "image": "../assets/max.png"
+  },
+  {
+    "id": 6,
+    "name": "Carlos Sainz",
+    "team": "Ferrari",
+    "country": "Spain",
+    "championships": 0,
+    "points": 320,
+    "image": "../assets/max.png"
+  }
+]
